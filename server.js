@@ -5,7 +5,6 @@ const config = require("./config")
 const port = config.PORT || 5000
 const db = config.MONGODB_URI
 const app = express()
-require("dotenv").config()
 
 // Bodyparser middleware
 app.use(
