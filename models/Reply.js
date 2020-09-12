@@ -2,7 +2,12 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 var ObjectId = mongoose.Schema.Types.ObjectId
 const UserSchema = new Schema({
-  user_id: {
+  From: {
+    type: ObjectId,
+    required: true,
+    ref: "users",
+  },
+  To: {
     type: ObjectId,
     required: true,
     ref: "users",
@@ -20,4 +25,4 @@ const UserSchema = new Schema({
     default: false,
   },
 })
-module.exports = Posts = mongoose.model("posts", UserSchema)
+module.exports = Reply = mongoose.model("replies", UserSchema)

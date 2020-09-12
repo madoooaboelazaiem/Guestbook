@@ -30,9 +30,9 @@ const UserSchema = new Schema({
     type: String,
     required: false,
   },
-  Birth_Date: {
-    type: Date,
+  token: {
+    type: String,
     required: false,
   },
 })
-module.exports = Users = mongoose.model("users", UserSchema)
+module.exports = User = mongoose.model("users", UserSchema)
