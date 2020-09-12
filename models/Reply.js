@@ -2,15 +2,15 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 var ObjectId = mongoose.Schema.Types.ObjectId
 const UserSchema = new Schema({
-  From: {
+  user_id: {
     type: ObjectId,
     required: true,
     ref: "users",
   },
-  To: {
+  post_id: {
     type: ObjectId,
     required: true,
-    ref: "users",
+    ref: "posts",
   },
   Message: {
     type: String,
