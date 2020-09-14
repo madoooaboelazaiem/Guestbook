@@ -88,10 +88,21 @@ UserRegistration = async function (req, res) {
           data: userCreated,
         })
       } catch (e) {
+        const encrypted = bcrypt.genSaltSync(10)
+        const hashedPassword = bcrypt.hashSync(req.body.Password, encrypted)
+        req.body.Password = hashedPassword
+        req.body.Deleted = false
+        const newUser = await User.create(req.body)
+        const userCreated = await User.findOne({ _id: newUser._id })
+        res.status(200).send({
+          status: "success",
+          msg: "User created successfully without email",
+          data: userCreated,
+        })
         console.log(e)
-        res
-          .status(422)
-          .send({ status: "failure", message: "User Creation Failed" })
+        // res
+        //   .status(422)
+        //   .send({ status: "failure", message: "User Creation Failed" })
       }
     }
   } catch (error) {
