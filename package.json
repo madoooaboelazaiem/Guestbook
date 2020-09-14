@@ -1,19 +1,26 @@
 {
-  "name": "guestbook",
-  "version": "1.0.0",
-  "description": "A guestbook app where a user can add, edit, delete and reply to posts posted by other users in the database",
-  "main": "server.js",
+  "name": "simple-guestbook",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "font-awesome": "^4.7.0",
+    "moment": "^2.28.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-markdown": "^4.3.1",
+    "react-scripts": "0.9.5"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/madoooaboelazaiem/Guestbook.git"
-  },
-  "author": "Mohamed Salama",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/madoooaboelazaiem/Guestbook/issues"
-  },
-  "homepage": "https://github.com/madoooaboelazaiem/Guestbook#readme"
+  "engines": {
+    "node": "10.16.0"
+  }
 }
