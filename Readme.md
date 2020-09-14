@@ -24,6 +24,6 @@
 
 ### Note
 
-**Backend is more advanced than the frontend where a forget password and multiple extra features was added so that it can make a better website if I had the time.**
-**Nodemailer working locally since google removed the oauth2 keys from the latest authentication protocol of nodemailer.**
-**To view the replies to a certain post once you reply has a glitch where it sends you back to the post in order to notifiy all other users using email that a message has been sent**
+- **Backend is more advanced than the frontend where a forget password and multiple extra features was added so that it can make a better website if I had the time.**
+- **Nodemailer working locally since google removed the oauth2 keys from the latest authentication protocol of nodemailer.**
+- **To view the replies to a certain post once you reply has a glitch where it sends you back to the post in order to notifiy all other users using email that a message has been sent**
