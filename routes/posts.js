@@ -1,8 +1,6 @@
 const express = require("express")
 const router = express.Router()
-
 const post = require("../controllers/posts")
-
 const middleware = require("../middleware/auth")
 
 router.post("/:user_id", middleware.verifyToken, post.CreatePost) //I should be able to add post
