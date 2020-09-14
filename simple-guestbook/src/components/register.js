@@ -102,6 +102,8 @@ export default class Register extends Component {
             message: response.data.message,
             successful: true,
           })
+          alert("Registration Successful, Please Check Your Email!!")
+          this.props.history.push("/")
         },
         (error) => {
           const resMessage =
@@ -115,6 +117,8 @@ export default class Register extends Component {
             successful: false,
             message: resMessage,
           })
+          alert("An Error Occured While Trying To Register Please Try Again")
+          this.props.history.push("/register")
         }
       )
     }

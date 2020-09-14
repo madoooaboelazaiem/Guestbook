@@ -62,50 +62,6 @@ class CommentBox extends Component {
       window.location.reload()
     }
   }
-  //   onChangeMessage = (e) => {
-  //     console.log(e.target.value)
-  //     const newState = { ...this.state }
-  //     newState[e.target.name] = e.target.value
-  //     this.setState(newState)
-  //   }
-  //   submitPost = (e) => {
-  //     var user = AuthService.getCurrentUser()
-  //     e.preventDefault()
-  //     if (!this.state.Message) return
-  //     axios
-  //       .post(API_URL + user.id, {
-  //         Message: this.state.Message,
-  //       })
-  //       .then((res) => {
-  //         this.setState({ done: true, author: user.Email })
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //         this.setState({ error: true })
-  //         alert("There was a problem posting a message please try again later")
-  //         // window.location.href = "/"
-  //       })
-  //   }
-  //   submitComment = (e) => {
-  //     var user = AuthService.getCurrentUser()
-  //     e.preventDefault()
-  //     const { author, Message } = this.state
-  //     if (!Message) return
-  //     fetch("/api/posts/" + user.id, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: user.token,
-  //       },
-  //       body: JSON.stringify({ Message }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((res) => {
-  //         if (!res.success)
-  //           this.setState({ error: res.error.message || res.error })
-  //         else this.setState({ author: "", Message: "", error: null })
-  //       })
-  //   }
   onUpdateComment = (id) => {
     const oldComment = this.state.data.find((c) => c._id === id)
     if (!oldComment) return
@@ -146,61 +102,6 @@ class CommentBox extends Component {
     // }).catch((e)=>{
     //   console.
     // })
-  }
-
-  submitComment = (e) => {
-    e.preventDefault()
-    const { Message, updateId } = this.state
-    if (!Message) return
-    if (updateId) {
-      this.submitUpdatedComment()
-    } else {
-      this.submitNewComment()
-    }
-  }
-
-  submitNewComment = () => {
-    var user = AuthService.getCurrentUser()
-    const { author, Message } = this.state
-    const data = [
-      ...this.state.data,
-      {
-        author,
-        Message,
-        _id: Date.now().toString(),
-        updatedAt: new Date(),
-        createdAt: new Date(),
-      },
-    ]
-    this.setState({ data })
-    fetch("/api/posts/" + user.id, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ Message }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.success)
-          this.setState({ error: res.error.message || res.error })
-        else this.setState({ author: "", Message: "", error: null })
-      })
-  }
-
-  submitUpdatedComment = () => {
-    var user = AuthService.getCurrentUser()
-    const { Message } = this.state
-    if (!this.state.Message) return
-    const posting = axios
-      .put(API_URL + user.id, {
-        Message: Message,
-      })
-      .then((res) => {
-        alert("Post updated successfully")
-      })
-      .catch((error) => {
-        console.log(error.response)
-        alert(error.response.data.message)
-      })
   }
 
   render() {
