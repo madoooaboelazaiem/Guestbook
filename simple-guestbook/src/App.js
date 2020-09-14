@@ -6,6 +6,7 @@ import Login from "./components/login"
 import Register from "./components/register"
 import Comment from "./components/commentBox"
 import AuthService from "./services/authServices"
+import ReplyBox from "./components/replyBox"
 
 class App extends Component {
   constructor(props) {
@@ -72,6 +73,7 @@ class App extends Component {
           <Switch>
             <Route exact path={["/", "/login"]} component={Login} />
             <Route exact path="/post" component={Comment} />
+            <Route path="/replies" component={ReplyBox} />
             <Route exact path="/register" component={Register} />
             {/* <Route exact path="/post" component={Post} /> */}
           </Switch>

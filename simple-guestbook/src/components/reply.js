@@ -9,7 +9,7 @@ import axios from "axios"
 import "font-awesome/css/font-awesome.css"
 import ReplyBox from "./replyBox"
 
-const API_URL = "http://localhost:3000/api/posts/"
+const API_URL = "http://localhost:3000/api/replies/"
 class Comment extends Component {
   constructor(props) {
     super(props)
@@ -54,26 +54,6 @@ class Comment extends Component {
             <h3>{this.props.author}</h3>
             <ReactMarkdown source={this.props.children} />
           </div>
-          <div>
-            {" "}
-            <Link
-              to={{
-                pathname: "/replies",
-                state: {
-                  replyId: this.props.id,
-                },
-              }}
-            >
-              <a
-                className="replyButton"
-                onClick={() => {
-                  this.addValue(this.props.id, this.state)
-                }}
-              >
-                Reply
-              </a>
-            </Link>
-          </div>
 
           <div className="singleCommentButtons">
             <span className="time">
@@ -108,12 +88,6 @@ class Comment extends Component {
               <i className="fa fa-comment" />
             </button> */}
           </div>
-        </div>
-        <div>
-          <Switch>
-            <Route path="/replies" component={ReplyBox} />
-            {/* <Route exact path="/post" component={Post} /> */}
-          </Switch>
         </div>
       </div>
     )
