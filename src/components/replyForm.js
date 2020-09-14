@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 import AuthService from "../services/authServices"
 import axios from "axios"
-const API_URL = "http://localhost:3000/api/replies/"
+const API_URL = "https://backendguestbook.herokuapp.com//api/replies/"
 class ReplyForm extends Component {
   constructor(props) {
     super(props)

@@ -6,7 +6,7 @@ import CommentForm from "./commentForm"
 import AuthService from "../services/authServices"
 import axios from "axios"
 import "./commentBox.css"
-const API_URL = "http://localhost:3000/api/posts/"
+const API_URL = "https://backendguestbook.herokuapp.com//api/posts/"
 class CommentBox extends Component {
   constructor() {
     super()

@@ -9,7 +9,7 @@ import axios from "axios"
 import "font-awesome/css/font-awesome.css"
 import ReplyBox from "./replyBox"
 
-const API_URL = "http://localhost:3000/api/replies/"
+const API_URL = "https://backendguestbook.herokuapp.com//api/replies/"
 class Comment extends Component {
   constructor(props) {
     super(props)

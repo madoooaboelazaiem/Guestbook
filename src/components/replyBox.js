@@ -6,7 +6,7 @@ import ReplyForm from "./replyForm"
 import AuthService from "../services/authServices"
 import axios from "axios"
 import "./ReplyBox.css"
-const API_URL = "http://localhost:3000/api/replies/"
+const API_URL = "https://backendguestbook.herokuapp.com//api/replies/"
 class ReplyBox extends Component {
   constructor(props) {
     super(props)
