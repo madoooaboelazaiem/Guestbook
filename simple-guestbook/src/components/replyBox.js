@@ -44,13 +44,15 @@ class ReplyBox extends Component {
     }
     this.pollInterval = true
     var user = AuthService.getCurrentUser()
-    const replyId = this.props.location.state.replyId
+    var replyId
+    if (this.props.location.state) {
+      replyId = this.props.location.state.replyId
+    } else {
+      alert("Error Occured Please Try Again")
+      return this.props.history.push("/post")
+    }
+
     this.setState({ replyId: replyId })
-    console.log(
-      this.state.replyId,
-      "replybox",
-      this.props.location.state.replyId
-    )
     if (user) {
       var token = user.token
       if (token) {

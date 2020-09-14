@@ -21,7 +21,6 @@ class Comment extends Component {
     this.addValue = this.addValue.bind(this)
   }
   updatePost(id) {
-    console.log(id)
     const enteredName = prompt("Enter the new message")
     var user = AuthService.getCurrentUser()
     // e.preventDefault()
@@ -33,6 +32,7 @@ class Comment extends Component {
       })
       .then((res) => {
         alert("Message Updated Successfully")
+        window.location.reload()
       })
       .catch((e) => {
         alert("There was a problem updating the message please try again later")
