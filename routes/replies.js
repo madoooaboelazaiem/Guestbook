@@ -6,14 +6,10 @@ const reply = require("../controllers/replies")
 
 const middleware = require("../middleware/auth")
 
-router.post("/createReply/:post_id", middleware.verifyToken, reply.CreateReply)
-router.put(
-  "/deleteReply/:user_id/:reply_id",
-  middleware.verifyToken,
-  reply.DeleteReply
-)
+router.post("/:post_id", middleware.verifyToken, reply.CreateReply)
+router.put("/:user_id/:reply_id", middleware.verifyToken, reply.DeleteReply)
 router.get(
-  "/getAllReplies/:user_id/:post_id",
+  "/:user_id/:post_id",
   middleware.verifyToken,
   reply.GetAllRepliesToPost
 )

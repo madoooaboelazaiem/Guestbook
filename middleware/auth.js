@@ -14,12 +14,13 @@ function verifyToken(req, res, next) {
     if (bearer[0] !== "Bearer") {
       return res
         .status(400)
-        .send({ status: "failure", message: "Authentication Failed" })
+        .send({ status: "failure", message: "Authentication Failed Bearer" })
     } else {
       req.token = bearerToken
       // Next middleware
       jwt.verify(req.token, tokenKey, async (err, authData) => {
         if (err) {
+          console.log(err)
           return res
             .status(400)
             .send({ status: "failure", message: "Authentication Failed" })

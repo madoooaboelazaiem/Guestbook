@@ -5,12 +5,9 @@ const post = require("../controllers/posts")
 
 const middleware = require("../middleware/auth")
 
-router.post("/createPost/:user_id", middleware.verifyToken, post.CreatePost) //I should be able to add post
-router.put(
-  "/deletePost/:user_id/:post_id",
-  middleware.verifyToken,
-  post.DeletePost
-)
-router.get("/getGroupPosts/:user_id", middleware.verifyToken, post.GetAllPosts)
+router.post("/:user_id", middleware.verifyToken, post.CreatePost) //I should be able to add post
+router.delete("/:user_id/:post_id", middleware.verifyToken, post.DeletePost)
+router.get("", middleware.verifyToken, post.GetAllPosts)
+router.put("/:user_id/:post_id", middleware.verifyToken, post.UpdatePost)
 
 module.exports = router

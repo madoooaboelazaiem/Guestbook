@@ -60,6 +60,7 @@ CreatePost = async function (req, res) {
 
 DeletePost = async function (req, res) {
   try {
+    // console.log(req.params.user_id, req.params.post_id)
     if (req.user_id !== req.params.user_id) {
       return res
         .status(404)
@@ -93,7 +94,6 @@ DeletePost = async function (req, res) {
         res.status(200).send({
           status: "success",
           msg: "Post Deleted successfully",
-          data: deletedPost,
         })
       }
     } else {
@@ -109,6 +109,36 @@ DeletePost = async function (req, res) {
 
 GetAllPosts = async function (req, res) {
   try {
+    // if (req.user_id !== req.params.user_id) {
+    //   return res
+    //     .status(404)
+    //     .send({ status: "failure", message: "Access Forbidden" })
+    // }
+    // const user = await User.findOne({ _id: req.params.user_id })
+    // if (!user) {
+    //   return res
+    //     .status(404)
+    //     .send({ status: "failure", message: "User Not Found" })
+    // }
+
+    const allPosts = await Post.find({
+      Deleted: false,
+    }).populate({ path: "user_id" })
+    return res.status(200).send({
+      status: "success",
+      msg: "Posts Fetched successfully",
+      data: allPosts,
+    })
+  } catch (error) {
+    console.log(error)
+    return res
+      .status(422)
+      .send({ status: "failure", message: "Posts Fetching Failed" })
+  }
+}
+UpdatePost = async function (req, res) {
+  try {
+    // console.log(req.params.user_id, req.params.post_id)
     if (req.user_id !== req.params.user_id) {
       return res
         .status(404)
@@ -120,20 +150,38 @@ GetAllPosts = async function (req, res) {
         .status(404)
         .send({ status: "failure", message: "User Not Found" })
     }
+    const post = await Post.findOne({ _id: req.params.post_id })
+    if (!post) {
+      return res
+        .status(404)
+        .send({ status: "failure", message: "Post Not Found" })
+    }
 
-    const allPosts = await Post.find({
-      Deleted: false,
-    }).populate({ path: "user_id" })
-    res.status(200).send({
-      status: "success",
-      msg: "Posts Fetched successfully",
-      data: allPosts,
-    })
+    if (post.user_id.toString() === req.params.user_id) {
+      if (user.Deleted === true) {
+        return res.status(404).send({
+          status: "failure",
+          message:
+            "Account is deactivated to activate your account please request access",
+        })
+      } else {
+        await Post.findOneAndUpdate(
+          { user_id: req.params.user_id, _id: req.params.post_id },
+          { Message: req.body.Message, Created_At: new Date() }
+        )
+        res.status(200).send({
+          status: "success",
+          msg: "Post updated successfully",
+        })
+      }
+    } else {
+      return res
+        .status(403)
+        .send({ status: "failure", message: "You cannot update this post" })
+    }
   } catch (error) {
     console.log(error)
-    res
-      .status(422)
-      .send({ status: "failure", message: "Posts Fetching Failed" })
+    res.status(422).send({ status: "failure", message: "Post update Failed" })
   }
 }
 
@@ -141,4 +189,5 @@ module.exports = {
   CreatePost,
   DeletePost,
   GetAllPosts,
+  UpdatePost,
 }

@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require("cors")
 const bodyParser = require("body-parser") //used to parse incoming request bodies in a middleware
 const config = require("./config")
 const user = require("./routes/users")
@@ -16,7 +17,7 @@ app.use(
   })
 )
 app.use(bodyParser.json())
-
+app.use(cors())
 app.use("/api/users", user)
 app.use("/api/posts", post)
 app.use("/api/replies", reply)

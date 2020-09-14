@@ -37,11 +37,12 @@ Login = async function (req, res) {
           id: user._id,
         }
         req.user_id = user._id
-        req.role = user.User_Category
         const token = middleware.generateAccessToken(payload)
         return res.status(200).send({
           status: "success",
           token: token,
+          id: req.user_id,
+          email: Email,
         })
       }
     } else return res.status(400).send({ error: "Wrong password" })
@@ -126,8 +127,7 @@ UpdateUser = async function (req, res) {
         })
       } else {
         dataToBeUpdated = {
-          First_Name: req.body.First_Name,
-          Last_Name: req.body.Last_Name,
+          Username: req.body.Username,
         }
 
         const newUser = await User.updateOne(
