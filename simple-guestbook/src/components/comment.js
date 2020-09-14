@@ -55,7 +55,7 @@ class Comment extends Component {
                 this.updatePost(this.props.id)
               }}
             >
-              <i class="fa fa-wrench"></i>
+              <i className="fa fa-wrench"></i>
               {/* <i className="fa fa-comment" /> */}
             </button>
             <button
