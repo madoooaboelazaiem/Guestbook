@@ -20,4 +20,5 @@
 
 ### Note
 
-**Backend is more advanced than the frontend where a forget password and multiple extra features was added so that it can make a better website if I had the time**
+**Backend is more advanced than the frontend where a forget password and multiple extra features was added so that it can make a better website if I had the time.**
+**Nodemailer working locally since google removed the oauth2 keys from the latest authentication protocol of nodemailer.**
