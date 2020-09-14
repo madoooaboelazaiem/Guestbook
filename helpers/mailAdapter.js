@@ -8,8 +8,8 @@ const config = require("../config")
 async function send(from, to, subject, text, html) {
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,
     auth: {
       user: config.EMAIL, // generated ethereal user
       pass: config.PASS, // generated ethereal password
