@@ -7,7 +7,9 @@ const config = require("../config")
 // create reusable transporter object using the default SMTP transport
 async function send(from, to, subject, text, html) {
   let transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: config.EMAIL, // generated ethereal user
       pass: config.PASS, // generated ethereal password
