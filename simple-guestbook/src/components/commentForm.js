@@ -1,6 +1,5 @@
 // CommentForm.js
 import React, { Component } from "react"
-import PropTypes from "prop-types"
 import AuthService from "../services/authServices"
 import axios from "axios"
 const API_URL = "http://localhost:3000/api/posts/"
